@@ -1,29 +1,28 @@
 // the current day is displayed at the top of the calendar
 var todayDate = moment().format('dddd, MMM Do YYYY');
 $("#currentDay").html(todayDate);
-console.log(todayDate);
+// console.log(todayDate);
 // time blocks with color coding
-$(document).ready(function() {
-    $('.time-block').each(function() {
-        $(this).attr('hour');
-        var hour = $(this).attr('hour');
-        hour = moment().hour(hour);
+$(document).ready(function () {
+    $('.time-block').each(function () {
+        var hour = parseInt($(this).attr('hour'));
         var currentTime = moment();
-        console.log(hour);
+        // console.log(hour);
+        console.log(currentTime.hour());
         if (currentTime.hour() == hour) {
             $(this).children('textarea').addClass('present');
         }
         else if (currentTime.hour() < hour) {
-            $(this).children('textarea').addClass('past');
-        }
-        else if (currentTime.hour() > hour) {
             $(this).children('textarea').addClass('future');
         }
-    // local storage
-    var something = localStorage.getItem(hour.hour());
-    $(this).children('textarea').val(something);
-    console.log(something);
-    console.log(hour);
+        else if (currentTime.hour() > hour) {
+            $(this).children('textarea').addClass('past');
+        }
+        // local storage
+        var storage = localStorage.getItem(hour);
+        $(this).children('textarea').val(storage);
+        // console.log(storage);
+        // console.log(hour);
     });
 
     $('.time-block').children('button').click(function () {
