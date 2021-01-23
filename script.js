@@ -10,13 +10,13 @@ $(document).ready(function() {
         hour = moment().hour(hour);
         var currentTime = moment();
         console.log(hour);
-        if (currentTime.hour() === hour) {
+        if (currentTime.hour() == hour) {
             $(this).children('textarea').addClass('present');
         }
-        if (currentTime.hour() < hour) {
+        else if (currentTime.hour() < hour) {
             $(this).children('textarea').addClass('past');
         }
-        if (currentTime.hour() > hour) {
+        else if (currentTime.hour() > hour) {
             $(this).children('textarea').addClass('future');
         }
     // local storage
@@ -33,8 +33,3 @@ $(document).ready(function() {
         localStorage.setItem(hour, text);
     });
 });
-
-
-// past present and future color blocking
-
-// when I click the save button it saves to local storage
